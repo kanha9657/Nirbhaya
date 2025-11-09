@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+   <link rel="stylesheet" href="stl.css">
+</head>
+<body>
+  <script src="scrpt.js"></script>
+  <header>
+    <img class="logo" src="logo.png" alt="logo">
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    </header>
+    <!-- drop down menu -->
+     <div id="dropdownMenu" class="dropdown">
+    <a href="home.html">Home</a>
+    <a href="#">SOS</a>
+    <a href="contact.html">Contacts</a>
+    <a href="#">Settings</a>
+  </div>
+  <div class="babu" align="center">
+<div class="sign">
+  <br>
+  <br>
+      <h3 align="center">Create a Account Here......</h3>
+      <br>
+      <!-- <form action="post"> -->
+      <div class="from">
+          <label for="f1">User Name : </label>
+      <input align="center" class="inp" type="text" name="username" id="f1"placeholder="Enter User Name :" required>
+      <br><br>
+      <lable for="f2">Password : </lable>
+      <input class="inp" align="center" type="text"name="password" id="f2"placeholder="Enter Password :" required>
+    <br>
+      <p align="center">(for emergency )</p>
+      <label for="f3">Emergency contact 1 :</label>
+      <input  align="center" onclick="showData()" type="number" class="inp" name="contact 1" id="f3"placeholder="Emergency contact 1 :"required>
+      <br><br>
+    <label for="f4">Emergency contact 2 :</label>
+      <input type="number" class="inp" name="contact 2" id="f4"placeholder="Emergency contact 1 :">
+      <br><br>
+        <button onclick="saveData()"type="submit"class="submit">Submit</button>
+    </div>
+      <!-- </form> -->
+  </div>
+  </div>
+   <script>
+    function saveData() {
+      // get values
+      let name = document.getElementById("f3").value;
+      let email = document.getElementById("f4").value;
+
+      // create an object
+      let user = { name: name, email: email };
+
+      // get old data or empty array
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+
+      // add new user
+      users.push(user);
+
+      // save back
+      localStorage.setItem("users", JSON.stringify(users));
+
+      // redirect to contact.html
+      window.location.href = "contact.html";
+    }
+  </script>
+</body>
+</html>
